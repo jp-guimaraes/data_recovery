@@ -1,14 +1,21 @@
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>João Guimarães</title>
+
+		<meta name="description" content="Apresentação profissional do Professor João Paulo Ferreira Guimarães">
+		<meta name="author" content="João Guimarães">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
@@ -21,25 +28,85 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
 	</head>
+	<style>
+		* {
+		  box-sizing: border-box;
+		}
+
+		.row {
+		  display: flex;
+		}
+
+		/* Create three equal columns that sits next to each other */
+		.column {
+		  flex: 33.33%;
+		  padding: 5px;
+		</style>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h3>João Paulo F. Guimarães</h3>
+					<p> <small><a href = "mailto: joao.guimaraes@ifrn.edu">joao.guimaraes@ifrn.edu</a></small> </p>
+					<p>						
+						<a href="http://jp-guimaraes.github.io">website</a>
+					</p>
+					</section>
+				
+				<section>
+					<section>
+						<h3>Qual a peça mais valiosa do computador?</h3>	
+					</section>
+					<section>
+						<h4>Revisão - Componentes do computador.</h4>
+					</section>
+					<section data-background-iframe="http://www.kabum.com.br/``" data-background-interactive>
+					<div style="position: absolute; width: 20%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+						<p>Preço atualizado?</p>
+					</div>
+				</section>
+					
+				</section>			
+
+					
+
+				<section>
+					<h4>Dúvidas, críticas, sugestões?</h4>
+					<p> <small><a href = "mailto: joao.guimaraes@ifrn.edu">joao.guimaraes@ifrn.edu</a></small> </p>
+					<p> <small>Apresentanção feita usando <a href="https://github.com/hakimel/reveal.js">reveal.js</a></small> </p>
+				</section>
 			</div>
-		</div>
+		</div>	
 
 		<script src="js/reveal.js"></script>
 
 		<script>
-			Reveal.registerPlugin( 'myPlugin', {
-				init: () => {
-					return new Promise( resolve => setTimeout( resolve, 3000 ) );
-				}
-			} );
-			Reveal.addEventListener( 'ready', () => console.log( 'Three seconds later...' ) );
-			Reveal.initialize();
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
 		</script>
+
 	</body>
 </html>
+
