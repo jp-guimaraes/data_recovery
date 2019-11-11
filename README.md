@@ -1,9 +1,9 @@
-# recuperacao de dados
+# Recuperacao de dados
 Aula sobre recuperação de dados
 
-# Conteúdos
+## Introdução
 
-## Qual é o componente mais valioso de um computador?
+**Qual é o componente mais valioso de um computador?**
 
 Você pode sugerir, num primeiro momento, que seria o processador. Em geral, o processador é o componente mais caro de um computador. A não ser que você queira investir numa placa de vídeo de ponta, ou numa placa-mãe cheia de novidades. Todas essas alternativas estão considerando valor econômico das partes do computador, mas será mesmo que valioso é aquilo que tem um preço alto?
 
