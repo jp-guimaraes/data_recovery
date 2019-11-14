@@ -1,6 +1,9 @@
 # Recuperacao de dados
 Aula sobre recuperação de dados
 
+# Edite o texto a para organizar pesquise por  Markdown (Linguagem de marcação de texto )
+
+
 ## Introdução
 
 **Qual é o componente mais valioso de um computador?**
