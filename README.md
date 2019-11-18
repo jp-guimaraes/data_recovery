@@ -45,10 +45,10 @@ Recuperar, mas por quê?
 ## Recuperação de dados em partições e discos formatados
 Para recuperar dados em partições e discos formatados/deletados é recomendado o procedimento de clonagem.
 
-### Clonagem de discos
+## Clonagem de discos
 Aqui temos um breve resumo sobre clonagem de discos e partições usando o software dd. Existe um repositório mais completo sobre clonagem que pode ser encontrado [aqui](https://github.com/jp-guimaraes/clonagem). Lá pode ser encontrado uma revisão de alguns comandos básicos de terminal do linux para depois aprensentar o `dd`, ferramenta usada para clonagem.
 
-#### O comando dd
+### O comando dd
 Em geral o `dd` é usado da seguinte forma:
 
 ```shell
@@ -57,9 +57,35 @@ dd if=/dev/sda1 of=/dev/sdb2
 `if=/dev/sda1` é a primeira partição do disco a que será clonada para a segunda partição do disco b, `/dev/sdb2`
 
 
-#### Como fazer data wipe num disco rígido
+### Como fazer data wipe num disco rígido
 
 Uso:
 ```shell
 dd if=/dev/urandom of=/dev/sdX bs=4k
 ```
+
+### Roteiro de recuperação usando `foremost`
+
+Para usar o foremost para recuperar arquivos basta passar os tipos de arquivos que se deseja buscar pelos cabeçalhos, o arquivo ou partição de entrada e um diretório de saída onde os arquivos recuperados serão armazenados. Usa-se `-t all` para buscar por todas as extensões de arquivos possíveis.
+```shell
+foremost -t all -i arquivo_de_entrada -o diretorio_de_saida
+```
+
+
+1. Clonar partição alvo e gerar aquivo iso equivalente
+
+```shell
+dd if=/dev/particao_alvo of=/localizacao_do_arquivo
+```
+
+1. Criar diretório para receber arquivos recuperados
+```shell
+mkdir dir_arquivos_recuperados
+```
+1. Rodar foremost buscando por todos os cabeçalhos de arquivos possíveis na imagem criada
+
+```shell
+foremost -t all -i localizacao_do_arquivo -o dir_arquivos_recuperados
+```
+
+Ao final do processamento, um arquivo .txt é gerado com o resumo do procedimento.
