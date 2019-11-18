@@ -46,14 +46,16 @@ Recuperar, mas por quê?
 Para recuperar dados em partições e discos formatados/deletados é recomendado o procedimento de clonagem.
 
 ### Clonagem de discos
-Aqui temos um breve resumo sobre clonagem de discos e partições usando o software dd. Existe um repositório mais completo sobre clonagem que pode ser encontrado [aqui](https://github.com/jp-guimaraes/clonagem). Lá pode ser encontrado uma revisão de alguns comandos básicos de terminal do linux para depois aprensentar o **dd**, ferramenta usada para clonagem.
+Aqui temos um breve resumo sobre clonagem de discos e partições usando o software dd. Existe um repositório mais completo sobre clonagem que pode ser encontrado [aqui](https://github.com/jp-guimaraes/clonagem). Lá pode ser encontrado uma revisão de alguns comandos básicos de terminal do linux para depois aprensentar o `dd`, ferramenta usada para clonagem.
 
 #### O comando dd
-Em geral o **dd** é usado da seguinte forma:
+Em geral o `dd` é usado da seguinte forma:
 
 ```shell
-dd if = /dev/sda1 of = /dev/sdb2
+dd if=/dev/sda1 of=/dev/sdb2
 ```
+`if=/dev/sda1` é a primeira partição do disco a que será clonada para a segunda partição do disco b, `/dev/sdb2`
+
 
 #### Como fazer data wipe num disco rígido
 
