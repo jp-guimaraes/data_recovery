@@ -64,13 +64,16 @@ Uso:
 dd if=/dev/urandom of=/dev/sdX bs=4k
 ```
 
-### Roteiro de recuperação usando `foremost`
+### O programa `foremost` 
+
+O [foremost](https://github.com/korczis/foremost) é um software livre que busca por cabeçalhos de arquivos com o objetivo de recuperar arquivos em partições e discos. Por essa característica de buscar cabeçalhos, pode-se usar esse software para recuperar inclusive arquivos deletados ou de partições/discos formatados.
 
 Para usar o foremost para recuperar arquivos basta passar os tipos de arquivos que se deseja buscar pelos cabeçalhos, o arquivo ou partição de entrada e um diretório de saída onde os arquivos recuperados serão armazenados. Usa-se `-t all` para buscar por todas as extensões de arquivos possíveis.
 ```shell
 foremost -t all -i arquivo_de_entrada -o diretorio_de_saida
 ```
 
+### Roteiro de recuperação
 
 1. Clonar partição alvo e gerar aquivo iso equivalente
 
