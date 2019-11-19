@@ -42,10 +42,21 @@ Recuperar, mas por quê?
 
 ## RAID
 
+## Gerenciador de janelas do ubuntu
+
+```shell
+nautilus
+```
+
+## Gerenciador de janelas do lubuntu
+```shell
+pcmanfm
+```
+
 ## Montagem
 
 ```shell
-mount -t tipo arquivo_particao diretorio_destino
+sudo mount -t tipo arquivo_particao diretorio_destino
 ```
 O arquivo da partição vai ser algo do tipo `/dev/sda1`
 
