@@ -51,6 +51,7 @@ nautilus
 ```
 
 ## Gerenciador de janelas do lubuntu
+
 ```shell
 pcmanfm
 ```
@@ -60,8 +61,8 @@ pcmanfm
 ```shell
 sudo mount -t tipo arquivo_particao diretorio_destino
 ```
-O arquivo da partição vai ser algo do tipo `/dev/sda1`
 
+O arquivo da partição vai ser algo do tipo `/dev/sda1`
 
 ## Recuperação de dados em partições e discos formatados
 

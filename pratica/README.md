@@ -38,7 +38,7 @@ Use o `gparted` para formatar a partição recém criada para o sistema de arqui
 ### Coloque arquivos na partição
 
 Coloque algumas imagens, pdfs e quaisquer outros tipos de arquivo nessa partição.
-Um .zip exemplo pode ser encontrado [aqui](colocar link).
+Um .zip exemplo pode ser encontrado [aqui](https://raw.githubusercontent.com/jp-guimaraes/data_recovery/master/assets/arquivos_exemplo.zip).
 
 Para montar a partição use o comando `mount`
 
@@ -90,6 +90,15 @@ dd if=/dev/sda3 of=/home/usuario/clone2.iso
 ### Tente recuperar os dados usando o `foremost` nos dois arquivos contendo as cópias das partições alvo
 
 Use o [foremost](https://github.com/korczis/foremost) para buscar por cabeçalhos de arquivos nas imagens da partição alvo.
+
+Se o seu computador estiver conectado a internet basta fazer
+
+```shell
+sudo apt-get install foremost
+```
+
+Caso contrário, você pode baixar [aqui](https://raw.githubusercontent.com/jp-guimaraes/data_recovery/master/assets/foremost_1.5.7-6_i386.deb) a versão 32bits ou [aqui](https://raw.githubusercontent.com/jp-guimaraes/data_recovery/master/assets/foremost_1.5.7-6_amd64.deb) a versão 64 bits desse programa.
+
 Não esqueça de criar os dois diretórios de saida diferentes usando o `mkdir`
 
 ```shell
