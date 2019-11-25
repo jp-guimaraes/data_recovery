@@ -98,6 +98,11 @@ sudo apt-get install foremost
 ```
 
 Caso contrário, você pode baixar [aqui](https://raw.githubusercontent.com/jp-guimaraes/data_recovery/master/assets/foremost_1.5.7-6_i386.deb) a versão 32bits ou [aqui](https://raw.githubusercontent.com/jp-guimaraes/data_recovery/master/assets/foremost_1.5.7-6_amd64.deb) a versão 64 bits desse programa.
+Para instalar o `.deb` basta executar:
+
+```shell
+sudo dpkg -i nome_do_pacote
+```
 
 Não esqueça de criar os dois diretórios de saida diferentes usando o `mkdir`
 
