@@ -11,16 +11,21 @@ Equipamentos necessários a prática:
 O objetivo dessa prática é recuperar arquivos de uma partição que foi formatada.
 
 1. Crie uma nova partição no seu disco rígid
-1. Formate a partição recém criada 
-1. Coloque algumas imagens, pdfs e quaisquer outros tipos de arquivo nessa partição.
+1. Formate a partição recém criada (partição alvo)
+1. Inclua arquivos na partição alvo
+1. Formate a partição alvo
+1. Clone a partição alvo
+1. Realize o procedimento de data wipe na partição alvo
+1. Crie um segundo arquivo clone da partição alvo
+1. Tente recuperar os dados usando o `foremost` nos dois arquivos contendo as cópias das partições alvo
 
-Nas seções a seguir detalha-se cada ponto para realização da recuperação dos dados.
+Nas seções a seguir detalha-se cada ponto dessa aula prática.
 
 ## Criando a partição
 
 Use o programa `gparted` para criar uma nova partição no seu disco rígido. Para a aula recomenda-se que a partição seja bem pequena para diminuir o tempo de processamento da clonagem e recuperação. Recomenda-se, por exemplo, o uso de uma partição de 100 MB.
 
-Para iniciar o gparted como administrador basta usar o comando no terminal:
+Lembre-se que para iniciar o gparted como administrador basta usar o comando no terminal:
 
 ```shell
 sudo gparted
@@ -32,54 +37,73 @@ Use o `gparted` para formatar a partição recém criada para o sistema de arqui
 
 ### Coloque arquivos na partição
 
+Coloque algumas imagens, pdfs e quaisquer outros tipos de arquivo nessa partição.
+Um .zip exemplo pode ser encontrado [aqui](colocar link).
 
-
-Aqui temos um breve resumo sobre clonagem de discos e partições usando o software dd. Existe um repositório mais completo sobre clonagem que pode ser encontrado [aqui](https://github.com/jp-guimaraes/clonagem). Lá pode ser encontrado uma revisão de alguns comandos básicos de terminal do linux para depois aprensentar o `dd`, ferramenta usada para clonagem.
-
-### O comando dd
-
-Em geral o `dd` é usado da seguinte forma:
+Para montar a partição use o comando `mount`
 
 ```shell
-dd if=/dev/sda1 of=/dev/sdb2
+sudo mount -t auto /dev/sdXY /tmp/
 ```
-`if=/dev/sda1` é a primeira partição do disco a que será clonada para a segunda partição do disco b, `/dev/sdb2`
 
+onde X é a letra do disco que contém a partição alvo e Y e o número da partição alvo. Exemplo: sda3.
 
-### Como fazer data wipe num disco rígido
-
-Uso:
+E depois faça a cópia dos arquivos dentro do diretório teste dentro do arquivo .zip para o `/tmp`
 
 ```shell
-dd if=/dev/urandom of=/dev/sdX bs=4k
+sudo cp -r * . /tmp
 ```
 
-### O programa `foremost`
+### Formate a partição alvo
 
-O [foremost](https://github.com/korczis/foremost) é um software livre que busca por cabeçalhos de arquivos com o objetivo de recuperar arquivos em partições e discos. Por essa característica de buscar cabeçalhos, pode-se usar esse software para recuperar inclusive arquivos deletados ou de partições/discos formatados.
-
-Para usar o foremost para recuperar arquivos basta passar os tipos de arquivos que se deseja buscar pelos cabeçalhos, o arquivo ou partição de entrada e um diretório de saída onde os arquivos recuperados serão armazenados. Usa-se `-t all` para buscar por todas as extensões de arquivos possíveis.
+Certifique-se que a partição alvo foi desmontada:
 
 ```shell
-foremost -t all -i arquivo_de_entrada -o diretorio_de_saida
+sudo umount /tmp
 ```
 
-### Roteiro de recuperação
+Essa formatação pode ser feita direto pelo `gparted`. Clique com o botão direito na partição alvo e formate-a para o sistema de arquivo `fat 32`, por exemplo.
 
-1. Clonar partição alvo e gerar aquivo iso equivalente
+### Clone a partição alvo
+
+Recomenda-se a ferramenta `dd`. Para mais detalhes consulte [aqui](https://github.com/jp-guimaraes/clonagem)
 
 ```shell
-dd if=/dev/particao_alvo of=/localizacao_do_arquivo
+dd if=/dev/sda3 of=/home/usuario/clone1.iso
 ```
 
-1. Criar diretório para receber arquivos recuperados
+### Realize o procedimento de data wipe na partição alvo
+
+O próprio `dd` pode ser usado para fazer o procedimento de data wipe na partição alvo.
+Veja:
+
 ```shell
-mkdir dir_arquivos_recuperados
+dd if=/dev/urandom of=/dev/sd3 bs=4k
 ```
-1. Rodar foremost buscando por todos os cabeçalhos de arquivos possíveis na imagem criada
+
+### Crie um segundo arquivo clone da partição alvo
 
 ```shell
-foremost -t all -i localizacao_do_arquivo -o dir_arquivos_recuperados
+dd if=/dev/sda3 of=/home/usuario/clone2.iso
 ```
 
-Ao final do processamento, um arquivo .txt é gerado com o resumo do procedimento.
+### Tente recuperar os dados usando o `foremost` nos dois arquivos contendo as cópias das partições alvo
+
+Use o [foremost](https://github.com/korczis/foremost) para buscar por cabeçalhos de arquivos nas imagens da partição alvo.
+Não esqueça de criar os dois diretórios de saida diferentes usando o `mkdir`
+
+```shell
+mkdir nome_do_diretorio
+```
+
+```shell
+sudo foremost -t all -i /home/usuario/clone1.iso -o diretorio_de_saida1
+```
+
+e depois,
+
+```shell
+sudo foremost -t all -i /home/usuario/clone2.iso -o diretorio_de_saida2
+```
+
+Compare o resultado dos dois diretórios num relatório endereçado a joao.guimaraes@ifrn.edu.br
