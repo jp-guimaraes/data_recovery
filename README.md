@@ -44,6 +44,25 @@ Recuperar, mas por quê?
 
 ## RAID
 
+## Gerenciador de janelas do ubuntu
+
+```shell
+nautilus
+```
+
+## Gerenciador de janelas do lubuntu
+```shell
+pcmanfm
+```
+
+## Montagem
+
+```shell
+sudo mount -t tipo arquivo_particao diretorio_destino
+```
+O arquivo da partição vai ser algo do tipo `/dev/sda1`
+
+
 ## Recuperação de dados em partições e discos formatados
 
 Para recuperar dados em partições e discos formatados/deletados é recomendado o procedimento de clonagem.
