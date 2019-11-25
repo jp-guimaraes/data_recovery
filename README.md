@@ -1,8 +1,8 @@
 # Recuperacao de dados
+
 Aula sobre recuperação de dados
 
-# Edite o texto a para organizar pesquise por  Markdown (Linguagem de marcação de texto )
-
+Edite o texto a para organizar pesquise por  Markdown (Linguagem de marcação de texto )
 
 ## Introdução
 
@@ -15,7 +15,7 @@ Faltando um dia para a entrega do seu trabalho de fim de curso, por acidente, vo
 
 Por isso, nessa aula pretende-se mostrar várias estratégias de manutenção corretiva e preventiva relacionadas ao armazenamento de dados.
 
-Os slides usados na aula podem ser encontrados [aqui](https://jp-guimaraes.github.io/data_recovery). Eles vão sendo atualizados aos poucos. Se quiser contribuir para essa aula, o código pode ser encontrado [aqui](https://github.com/jp-guimaraes/data_recovery). Comentários, críticas e dúvidas também são sempre bem-vindas, basta enviar um e-mail para <joao.guimaraes@ifrn.edu.br>. 
+Os slides usados na aula podem ser encontrados [aqui](https://jp-guimaraes.github.io/data_recovery). Eles vão sendo atualizados aos poucos. Se quiser contribuir para essa aula, o código pode ser encontrado [aqui](https://github.com/jp-guimaraes/data_recovery). Comentários, críticas e dúvidas também são sempre bem-vindas, basta enviar um e-mail para <joao.guimaraes@ifrn.edu.br>.
 
 ## Técnicas de recuperação de dados
 
@@ -23,14 +23,16 @@ Os slides usados na aula podem ser encontrados [aqui](https://jp-guimaraes.githu
 * Manutenção Preventiva
 
 Recuperar, mas por quê?
+
 * Dados inacessíveis
-*	Sistema Operacional?
-*	Foram deletados?
-*	Lixeira
+* Sistema Operacional?
+* Foram deletados?
+* Lixeira
 * Nuvem
-	
+
 ## Estratégias de Backup
-* Importância 
+
+* Importância
 * Tipos de backup
 * RAID
 * Sistema Operacional
@@ -43,32 +45,37 @@ Recuperar, mas por quê?
 ## RAID
 
 ## Recuperação de dados em partições e discos formatados
+
 Para recuperar dados em partições e discos formatados/deletados é recomendado o procedimento de clonagem.
 
 ## Clonagem de discos
+
 Aqui temos um breve resumo sobre clonagem de discos e partições usando o software dd. Existe um repositório mais completo sobre clonagem que pode ser encontrado [aqui](https://github.com/jp-guimaraes/clonagem). Lá pode ser encontrado uma revisão de alguns comandos básicos de terminal do linux para depois aprensentar o `dd`, ferramenta usada para clonagem.
 
 ### O comando dd
+
 Em geral o `dd` é usado da seguinte forma:
 
 ```shell
 dd if=/dev/sda1 of=/dev/sdb2
 ```
-`if=/dev/sda1` é a primeira partição do disco a que será clonada para a segunda partição do disco b, `/dev/sdb2`
 
+`if=/dev/sda1` é a primeira partição do disco a que será clonada para a segunda partição do disco b, `/dev/sdb2`
 
 ### Como fazer data wipe num disco rígido
 
 Uso:
+
 ```shell
 dd if=/dev/urandom of=/dev/sdX bs=4k
 ```
 
-### O programa `foremost` 
+### O programa `foremost`
 
 O [foremost](https://github.com/korczis/foremost) é um software livre que busca por cabeçalhos de arquivos com o objetivo de recuperar arquivos em partições e discos. Por essa característica de buscar cabeçalhos, pode-se usar esse software para recuperar inclusive arquivos deletados ou de partições/discos formatados.
 
 Para usar o foremost para recuperar arquivos basta passar os tipos de arquivos que se deseja buscar pelos cabeçalhos, o arquivo ou partição de entrada e um diretório de saída onde os arquivos recuperados serão armazenados. Usa-se `-t all` para buscar por todas as extensões de arquivos possíveis.
+
 ```shell
 foremost -t all -i arquivo_de_entrada -o diretorio_de_saida
 ```
@@ -82,9 +89,11 @@ dd if=/dev/particao_alvo of=/localizacao_do_arquivo
 ```
 
 1. Criar diretório para receber arquivos recuperados
+
 ```shell
 mkdir dir_arquivos_recuperados
 ```
+
 1. Rodar foremost buscando por todos os cabeçalhos de arquivos possíveis na imagem criada
 
 ```shell
